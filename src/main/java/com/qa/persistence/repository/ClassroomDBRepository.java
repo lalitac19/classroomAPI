@@ -5,6 +5,7 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -16,6 +17,7 @@ import com.qa.persistence.domain.Classroom;
 
 import com.qa.util.JSONUtil;
 
+@ApplicationScoped
 @Transactional(SUPPORTS)
 @Default
 public class ClassroomDBRepository implements ClassroomRepository {
