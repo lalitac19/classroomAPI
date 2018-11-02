@@ -17,7 +17,6 @@ import com.qa.persistence.domain.Classroom;
 import com.qa.persistence.domain.Trainee;
 import com.qa.util.JSONUtil;
 
-@ApplicationScoped
 @Transactional(SUPPORTS)
 @Default
 public class ClassroomDBRepository implements ClassroomRepository {
@@ -33,7 +32,7 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	@Transactional(REQUIRED)
 	public String addClassroom(String classroom) {
 		Classroom aClassroom = util.getObjectForJSON(classroom, Classroom.class);
-		Query query = manager.createQuery("INSET INTO Classroom (trainer, trainee) VALUES (' "+classroom +"')");
+		Query query = manager.createQuery("INSET INTO Classroom (trainer) VALUES (' "+classroom +"')");
 		manager.persist(aClassroom);
 		return "{\"message\": \"classroom has been sucessfully added\"}";
 	}
@@ -56,13 +55,13 @@ public class ClassroomDBRepository implements ClassroomRepository {
 		return "{\"Account has been successfully updated\"}";
 	}
 
-	public String getClassroom(int id) {
+	public String getAClassroom(int id) {
 		Query query = manager.createQuery("SELECT * FROM Classroom WHERE ID = " + id);
 		return util.getJSONForObject(query);
 	}
 
 	public String getAllClassrooms() {
-		Query query = manager.createQuery("Select * FROM CLASSROOM");
+		Query query = manager.createQuery("Select a FROM Classroom a");
 		Collection<Classroom> classroom = (Collection<Classroom>) query.getResultList();
 		return util.getJSONForObject(classroom);
 	}

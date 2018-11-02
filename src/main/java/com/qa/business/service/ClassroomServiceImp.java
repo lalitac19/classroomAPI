@@ -2,12 +2,14 @@ package com.qa.business.service;
 
 import javax.inject.Inject;
 
+import org.apache.log4j.Logger;
+
 import com.qa.persistence.repository.ClassroomRepository;
 
 
 
 public class ClassroomServiceImp implements ClassroomService {
-
+	private static final Logger LOGGER = Logger.getLogger(ClassroomService.class);
 	@Inject
 	private ClassroomRepository repo;
 	
@@ -27,11 +29,12 @@ public class ClassroomServiceImp implements ClassroomService {
 
 	public String getAClassroom(int id) {
 		// TODO Auto-generated method stub
-		return repo.getClassroom(id);
+		return repo.getAClassroom(id);
 	}
 
 	public String getAllClassrooms() {
 		// TODO Auto-generated method stub
+		LOGGER.info("In ClassroomServiceImpl getAllClassrooms ");
 		return repo.getAllClassrooms();
 	}
 	

@@ -5,7 +5,7 @@ public interface ClassroomRepository {
 	String addClassroom(String classroom);
 	String deleteClassroom(int id);
 	String ammendClassroom(String id);
-	String getClassroom(int id);
+	String getAClassroom(int id);
 	String getAllClassrooms();
 
 }

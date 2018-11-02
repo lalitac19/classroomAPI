@@ -29,7 +29,7 @@ public class ClassroomEndpoint {
 	@Path("/getAClassroom/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllClassrooms(@PathParam("id") int id) {
+	public String getAClassroom(@PathParam("id") int id) {
 		return service.getAClassroom(id);
 	}
 
