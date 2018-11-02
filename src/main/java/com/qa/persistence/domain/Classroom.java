@@ -1,10 +1,13 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Classroom {
@@ -13,7 +16,9 @@ public class Classroom {
 	private int ID;
 	@Column(length = 200)
 	private String trainer;
-	@Column(length = 200)
+	
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="TRAINEE_ID")
 	private Trainee trainee;
 	
 	public Classroom(int ID, String trainer, Trainee trainee) {

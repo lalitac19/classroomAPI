@@ -14,6 +14,7 @@ public class Trainee {
 	@Column(length = 200)
 	private String name;
 	
+	
 	public Trainee (int ID, String name) {
 		this.setID(ID);
 		this.setName(name); 
