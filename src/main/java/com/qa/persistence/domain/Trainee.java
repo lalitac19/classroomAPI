@@ -1,5 +1,6 @@
 package com.qa.persistence.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +11,9 @@ public class Trainee {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ID;
+	@Column(length = 200)
 	private String name;
+	
 	
 	public Trainee (int ID, String name) {
 		this.setID(ID);

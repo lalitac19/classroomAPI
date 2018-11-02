@@ -5,6 +5,7 @@ import static javax.transaction.Transactional.TxType.SUPPORTS;
 
 import java.util.Collection;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -13,9 +14,10 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.qa.persistence.domain.Classroom;
-
+import com.qa.persistence.domain.Trainee;
 import com.qa.util.JSONUtil;
 
+@ApplicationScoped
 @Transactional(SUPPORTS)
 @Default
 public class ClassroomDBRepository implements ClassroomRepository {
@@ -31,6 +33,7 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	@Transactional(REQUIRED)
 	public String addClassroom(String classroom) {
 		Classroom aClassroom = util.getObjectForJSON(classroom, Classroom.class);
+		Query query = manager.createQuery("INSET INTO Classroom (trainer, trainee) VALUES (' "+classroom +"')");
 		manager.persist(aClassroom);
 		return "{\"message\": \"classroom has been sucessfully added\"}";
 	}
@@ -54,12 +57,12 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	}
 
 	public String getClassroom(int id) {
-		Query query = manager.createQuery("SELECT * FROM Account WHERE ID = " + id);
+		Query query = manager.createQuery("SELECT * FROM Classroom WHERE ID = " + id);
 		return util.getJSONForObject(query);
 	}
 
 	public String getAllClassrooms() {
-		Query query = manager.createQuery("Select a FROM CLASSROOM a");
+		Query query = manager.createQuery("Select * FROM CLASSROOM");
 		Collection<Classroom> classroom = (Collection<Classroom>) query.getResultList();
 		return util.getJSONForObject(classroom);
 	}
