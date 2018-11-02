@@ -1,0 +1,6 @@
+INSERT INTO TRAINEE (id, name) VALUES (1, 'Charlie Vaidotas')
+INSERT INTO TRAINEE (id, name) VALUES (1, 'John Crutchley')
+INSERT INTO TRAINEE (id, name) VALUES (2, 'Matthew Smith')
+INSERT INTO TRAINEE (id, name) VALUES (2, 'Charlie Hunt')
+INSERT INTO CLASSROOM (trainer , trainee_id) VALUES ('John', 1)
+INSERT INTO CLASSROOM (trainer , trainee_id) VALUES ('Mathew', 2)

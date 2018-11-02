@@ -56,7 +56,7 @@ public class ClassroomDBRepository implements ClassroomRepository {
 	}
 
 	public String getAClassroom(int id) {
-		Query query = manager.createQuery("SELECT * FROM Classroom WHERE ID = " + id);
+		Query query = manager.createQuery("SELECT a FROM Classroom WHERE ID = " + id);
 		return util.getJSONForObject(query);
 	}
 
